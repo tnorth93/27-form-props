@@ -1,5 +1,6 @@
 # Form Props
 This is an app created with React that allows the user to set a subreddit and post number to retrieve posts from reddit.
+Simply enter the name of the subreddit you would like to pull posts from in the first field and change the number of posts you would like to display.
 #Getting Started
 1. Fork the repository
 2. git clone the repository link
