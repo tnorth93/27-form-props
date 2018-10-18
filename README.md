@@ -1,5 +1,5 @@
 # Form Props
-This is a small React app that uses the cowsay-browser package to generate a webpage that has an HTML cow that talks! Press the button to change what he/she has to say...
+This is an app created with React that allows the user to set a subreddit and post number to retrieve posts from reddit.
 #Getting Started
 1. Fork the repository
 2. git clone the repository link

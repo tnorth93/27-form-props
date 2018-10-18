@@ -9,15 +9,16 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.state.searchResults = [];
+    this.state.postList = [];
   }
 
-  loadPosts = async (subreddit, postLimit) => {
+  handleFormSubmits = async (subreddit, postLimit) => {
+    console.log(subreddit, postLimit);
     const REDDIT_API = `https://www.reddit.com/r/${subreddit}.json?limit=${postLimit}`;
     return superagent.get(REDDIT_API)
       .then(response => {
         if (response.body.data) {
-          this.setState({searchResults: response.body.data.children});
+          this.setState({postList: response.body.data.children});
         }
       })
       .catch(console.error);
@@ -27,7 +28,19 @@ class App extends React.Component {
     return (
       <main>
         <Header/>
-        <div><SearchForm/></div>
+        <SearchForm
+          handleFormSubmits = {this.handleFormSubmits}
+          />
+        <ul>
+          {
+          this.state.postList.map((currentPost, index) => {
+            return <SubredditSearchResults
+              article = {currentPost}
+              key = {index}
+            />
+          })
+          }
+        </ul>
       </main>
     );
   }
