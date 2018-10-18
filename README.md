@@ -1,4 +1,4 @@
-#Cowsay React App
+# Form Props
 This is a small React app that uses the cowsay-browser package to generate a webpage that has an HTML cow that talks! Press the button to change what he/she has to say...
 #Getting Started
 1. Fork the repository
@@ -11,7 +11,6 @@ This is a small React app that uses the cowsay-browser package to generate a web
 - NPM
 - IDE
 - Chrome
-- cowsay
 
 #Installing
 1. Fork the repository
@@ -21,7 +20,6 @@ This is a small React app that uses the cowsay-browser package to generate a web
 
 #Built With
 - React
-- cowsay
 
 #Versioning
 1.0.0

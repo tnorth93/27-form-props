@@ -1,6 +1,9 @@
 import "@babel/polyfill";
 import React from 'react';
 import superagent from 'superagent';
+import SearchForm from '../search-form/search-form';
+import SubredditSearchResults from '../search-results/search-results';
+import Header from '../header/header';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,17 +12,12 @@ class App extends React.Component {
     this.state.searchResults = [];
   }
 
-  async componentDidMount() {
-    await this.loadPostList();
-    console.log('Post list loaded');
-  }
-
-  loadPostList = async () => {
-    const REDDIT_API = 'https://www.reddit.com/r/nfl';
+  loadPosts = async (subreddit, postLimit) => {
+    const REDDIT_API = `https://www.reddit.com/r/${subreddit}.json?limit=${postLimit}`;
     return superagent.get(REDDIT_API)
       .then(response => {
-        if (response.body.results) {
-          this.setState({searchResults: response.body.results.slice(0, 10)});
+        if (response.body.data) {
+          this.setState({searchResults: response.body.data.children});
         }
       })
       .catch(console.error);
@@ -28,13 +26,11 @@ class App extends React.Component {
   render() {
     return (
       <main>
-
+        <Header/>
+        <div><SearchForm/></div>
       </main>
-    )
+    );
   }
-
-
-
 }
 
 export default App;
